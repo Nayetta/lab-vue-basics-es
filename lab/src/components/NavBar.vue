@@ -1,5 +1,9 @@
 <template>
-  <div v-bind:style="navStyle">Hi</div>
+  <div v-bind:style="navStyle" class="navBar">
+    <img src="../assets/logo.png" alt="" />
+    <h2>This is a navegation Bar</h2>
+    <img src="../assets/logo.png" alt="" />
+  </div>
 </template>
 
 <script>
@@ -12,11 +16,16 @@ export default {
         border: "1px solid darkgreen",
         marginTop: "0",
         width: "100%",
-        height: "50px",
+        height: "70px",
       },
     };
   },
 };
 </script>
 
-<style></style>
+<style>
+.navBar {
+  display: flex;
+  justify-content: space-around;
+}
+</style>

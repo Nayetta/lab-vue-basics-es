@@ -1,16 +1,23 @@
 <template>
-  <div>
-    <h1>Iteraction 2</h1>
+  <div v-bind:style="backStyle">
+    <h1>👨🏻 Iteraction 2</h1>
     <p>{{ num }}</p>
     <p>{{ suma(7, 8) }}</p>
     <p>{{ name() }}</p>
-    <h1>Iteraction 3</h1>
+    <h1>🪄 Iteraction 3</h1>
     <p v-if="showThis">This is shown with an if</p>
     <p v-show="!showThis">This is shown with a show</p>
-    <h1>Iteraction 4</h1>
-
-    <h1>Iteraction 5</h1>
-    <button></button>
+    <h1>🐜 🐈 🦅 Iteraction 4</h1>
+    <div>
+      <div v-for="animal in animalObject" :key="animal">
+        <h2>{{ animal.animal }} - {{ animal.type }}</h2>
+        <p>{{ animal.description }}</p>
+      </div>
+    </div>
+    <h1>🌈 Iteraction 5</h1>
+    <button :style="buttonStyle" @click="changeColor">
+      Change color to {{ butCol }}
+    </button>
   </div>
 </template>
 
@@ -21,6 +28,38 @@ export default {
       num: 8,
       nom: "Noemí",
       showThis: false,
+      backStyle: {
+        backgroundColor: "yellow",
+        border: "1px solid darkgreen",
+        marginTop: "0",
+        paddingBottom: "50px",
+        width: "100%",
+      },
+      buttonStyle: {
+        backgroundColor: "yellow",
+        border: "1px solid darkgreen",
+        marginTop: "0",
+        padding: "20px",
+        borderRadius: "30px",
+      },
+      animalObject: [
+        {
+          animal: "Hormiga",
+          type: "Insecto",
+          description: "Animal pequeño con muchas patas",
+        },
+        {
+          animal: "Gato",
+          type: "Mamifero",
+          description: "Dioses del Olimpo en la tierra",
+        },
+        {
+          animal: "Aguila",
+          type: "Pajaro",
+          description: "Pajarraco semi-grande con un pico gracioso",
+        },
+      ],
+      butCol: "🟣 pink 🟣",
     };
   },
   methods: {
@@ -29,6 +68,21 @@ export default {
     },
     name() {
       return this.nom.split("").reverse().join("");
+    },
+    changeColor() {
+      if (this.backStyle.backgroundColor == "yellow") {
+        this.backStyle.backgroundColor = "pink";
+        this.buttonStyle.backgroundColor = "pink";
+        this.butCol = "🟠 orange 🟠";
+      } else if (this.backStyle.backgroundColor == "pink") {
+        this.backStyle.backgroundColor = "orange";
+        this.buttonStyle.backgroundColor = "orange";
+        this.butCol = "🟡 yellow 🟡";
+      } else {
+        this.backStyle.backgroundColor = "yellow";
+        this.buttonStyle.backgroundColor = "yellow";
+        this.butCol = "🟣 pink 🟣";
+      }
     },
   },
 };
