@@ -1,23 +1,24 @@
 <template>
   <div v-bind:style="backStyle">
-    <h1>👨🏻 Iteraction 2</h1>
+    <h1>👨🏻 Iteración 2</h1>
     <p>{{ num }}</p>
     <p>{{ suma(7, 8) }}</p>
     <p>{{ name() }}</p>
-    <h1>🪄 Iteraction 3</h1>
+    <h1>🪄 Iteración 3</h1>
     <p v-if="showThis">This is shown with an if</p>
     <p v-show="!showThis">This is shown with a show</p>
-    <h1>🐜 🐈 🦅 Iteraction 4</h1>
+    <h1>🐜 🐈 🦅 Iteración 4</h1>
     <div>
       <div v-for="animal in animalObject" :key="animal">
         <h2>{{ animal.animal }} - {{ animal.type }}</h2>
         <p>{{ animal.description }}</p>
       </div>
     </div>
-    <h1>🌈 Iteraction 5</h1>
+    <h1>🌈 Iteración 5</h1>
     <button :style="buttonStyle" @click="changeColor">
       Change color to {{ butCol }}
     </button>
+    <button :style="buttonStyle" @click="booleanChange">Change Boolean</button>
   </div>
 </template>
 
@@ -83,6 +84,15 @@ export default {
         this.buttonStyle.backgroundColor = "yellow";
         this.butCol = "🟣 pink 🟣";
       }
+    },
+    booleanChange() {
+      this.showThis = !this.showThis;
+
+      // if (this.showThis == false) {
+      //   this.showThis = true;
+      // } else {
+      //   this.showThis = false;
+      // }
     },
   },
 };
